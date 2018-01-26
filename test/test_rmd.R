@@ -1,7 +1,7 @@
 ## Based off of Carl Boettiger's approach.
 
-language: R
-sudo: false
-cache: packages
-script: 
-  - R -f test/render_rmds.R
+## call rmarkdown on all .Rmd files
+f <- list.files(recursive = TRUE)
+Rmds <- f[grepl(".Rmd$", f)]
+lapply(Rmds, rmarkdown::render)
+
